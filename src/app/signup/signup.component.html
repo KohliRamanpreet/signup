@@ -1,0 +1,142 @@
+<head>
+    <title>Project</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand" style="color: black;"><strong>My Application</strong></span>
+            </div>
+            <ul class="nav navbar-nav">
+                <li style="color: black;" class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>
+                        Home</a></li>
+                <li style="color: black;"><a href="#"><span style="color: black;"
+                            class="	glyphicon glyphicon-globe"></span>
+                        About Us</a></li>
+                <li style="color: black;"><a href="#"><span style="color: black;"
+                            class="glyphicon glyphicon-envelope"></span>
+                        Mail Us</a></li>
+                <li style="color: black;"><a href="#"><span style="color: black;"
+                            class="glyphicon glyphicon-earphone"></span>
+                        Call Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="loginbox">
+        <img src="/assets/avatar.svg" class="avatar" alt="User">
+         <br>
+        <h1>Sign Up</h1>
+        <form (ngSubmit)="createUser()" #enForm="ngForm">
+            <label>User Name</label>
+            <input type="text" class="form-control" [(ngModel)]=userName #name="ngModel" placeholder="Enter UserName"
+                id="userName" name="userName" pattern="^[A-Za-z0-9\s]{4,20}$" required>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                <small class="text-danger">
+                    <small *ngIf="name.errors.required || name.errors.pattern">
+                        User Name mandatory length 4-20
+                    </small>
+                </small>
+            </div>
+            <label>First Name</label>
+            <input type="text" class="form-control" #name2="ngModel" pattern="^[A-Za-z\s]{3,20}$"
+                placeholder="Enter First Name" id="fullName" name="fullName" [(ngModel)]=userfullName required>
+            <div *ngIf="name2.invalid && (name2.dirty || name2.touched)">
+                <small class="text-danger">
+                    <small *ngIf="name2.errors.required || name2.errors.pattern">
+                        Name is required.
+                    </small>
+                </small>
+            </div>
+            <label>Last Name</label>
+            <input type="text" class="form-control" #name3="ngModel" pattern="^[A-Za-z\s]{3,20}$"
+                placeholder="Enter last Name" id="lastName" name="lastName" [(ngModel)]=userlastName required>
+            <div *ngIf="name3.invalid && (name3.dirty || name3.touched)">
+                <small class="text-danger">
+                    <small *ngIf="name3.errors.required || name3.errors.pattern">
+                        Name is required.
+                    </small>
+                </small>
+            </div>
+            <label>Password</label>
+            <input type="password" class="form-control" pattern="^[A-Za-z0-9\s]{5,100}$" #pass="ngModel"
+                placeholder="Password" id="pass" name="pass" [(ngModel)]=userPass required>
+            <div *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+                <small class="text-danger">
+                    <small *ngIf="pass.errors.required ">
+                        Password is required.
+                    </small>
+                    <small *ngIf=" pass.errors.pattern">
+                        Min length 5.
+                    </small>
+                </small>
+            </div>
+
+            <label>Re-enter Password</label>
+            <input type="password" appConfirmEqualValidator="pass" class="form-control" #pass1="ngModel"
+                placeholder="Password" id="pass1" name="pass1" [(ngModel)]=userPass2 required>
+            <div *ngIf="pass1.invalid && (pass1.dirty || pass1.touched)">
+                <small class="text-danger">
+                    <small *ngIf="pass1.errors.required ">
+                        Password is required.
+                    </small>
+                </small>
+                <small *ngIf="pass1.touched && pass1.errors.notEqual
+                     && 
+                     !pass1.errors.required">
+                    <small class="text-danger">
+                        Password and reEnter password does not match</small>
+                </small>
+            </div>
+            <label>Email</label>
+            <input type="email" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel"
+                placeholder="E-mail" id="eMail" name="eMail" [(ngModel)]=usereMail required>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                <small class="text-danger">
+                    <small *ngIf="email.errors.required">
+                        E-Mail is required.
+                    </small>
+                    <small *ngIf="email.errors.pattern">
+                        Invalid Email
+                    </small>
+                </small>
+            </div>
+            <label>Phone Number</label>
+            <input type="text" name="no" pattern="^[0-9]{10}$" #no="ngModel" [(ngModel)]=userpNumber
+                class="form-control" placeholder="Mobile Number" #mobile="ngModel" required />
+            <div *ngIf="no.invalid && (no.dirty || no.touched)">
+                <small class="text-danger">
+                    <small *ngIf="no.errors.required ">
+                        Phone Number is mandatory.
+                    </small>
+                    <small *ngIf=" no.errors.pattern">
+                        Invalid Number.
+                    </small>
+                </small>
+            </div>
+            <label>Date of Birth</label><br>
+            <input type="date" name="dob" #dob="ngModel" [(ngModel)]=userDOB class="form-control" placeholder="DOB"
+                #mobile="ngModel" required />
+            <div *ngIf="dob.invalid && (dob.dirty || dob.touched)">
+                <small class="text-danger">
+                    <small *ngIf="dob.errors.required ">
+                        DOB is mandatory.
+                    </small>
+                </small>
+            </div>
+            <label>Country</label>
+            <input type="text" class="form-control" [(ngModel)]=userCountry #country="ngModel"
+                placeholder="Enter Country" id="country" name="country" pattern="^[A-Za-z0-9\s]{4,20}$" required>
+            <div *ngIf="country.invalid && (country.dirty || country.touched)">
+                <small class="text-danger">
+                    <small *ngIf="country.errors.required || country.errors.pattern">
+                        Country is mandatory.
+                    </small>
+                </small>
+            </div>
+            <input type="submit" value="Sign-Up" [disabled]="enForm.form.invalid">
+        </form>
+    </div>
+</body>
